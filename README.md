@@ -6,3 +6,6 @@ For processing my university lecture videos to learn more efficiently.
 4. A video player with the ability to skip to the next significantly different slide, and skip sections of silence.  
 ### Dependencies ###
 Newtonsoft.Json, NReco.VideoConverter, NReco.VideoInfo, NAudio, Microsoft.CognitiveServices.Speech, Microsoft.Office.Interop.Word, .NET Framework...
+
+
+https://i.imgur.com/cvlAFrI.png
