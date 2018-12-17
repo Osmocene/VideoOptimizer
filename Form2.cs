@@ -29,7 +29,7 @@ namespace VideoOptimizer
         private void Form2_Load(object sender, EventArgs e)
         {
             dataGridViewTextBoxColumn = new DataGridViewTextBoxColumn { HeaderText = "Time", ReadOnly = true };
-            dataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn { HeaderText = "Include?", Width = 80 };
+            dataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn { HeaderText = "Include?", Width = 80, TrueValue = true, FalseValue = false };
             dataGridViewImageColumn = new DataGridViewImageColumn { HeaderText = "Image", Width = 200, ImageLayout = DataGridViewImageCellLayout.Zoom };
             dataGridView1.Columns.Add(dataGridViewTextBoxColumn);
             dataGridView1.Columns.Add(dataGridViewCheckBoxColumn);
@@ -53,7 +53,25 @@ namespace VideoOptimizer
                 }
             }
         }
-
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dataGridView1.GetCellCount(DataGridViewElementStates.Selected) == 1 &&
+                dataGridView1.Columns[dataGridView1.SelectedCells[0].ColumnIndex] is DataGridViewCheckBoxColumn &&
+                (e.KeyCode == Keys.Space || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left)
+                )
+            {
+                DataGridViewCheckBoxCell dgvcbc = (DataGridViewCheckBoxCell) dataGridView1.SelectedCells[0];
+                if (dgvcbc.Value == null)
+                {
+                    dgvcbc.Value = dgvcbc.TrueValue;
+                }
+                else
+                {
+                    dgvcbc.Value = dgvcbc.Value == dgvcbc.TrueValue ? dgvcbc.FalseValue : dgvcbc.TrueValue;
+                }
+            }
+            dataGridView1.EndEdit();
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
