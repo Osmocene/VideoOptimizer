@@ -67,7 +67,7 @@ namespace VideoOptimizer
                 }
             }
             //Shuffle images forward.
-            MoveImagesForward(listparagraph, listfloat);
+            listparagraph = MoveImagesForward(listparagraph, listfloat);
             Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
             winword.ShowAnimation = false;
             winword.Visible = false;
@@ -137,7 +137,7 @@ namespace VideoOptimizer
 
             return destImage;
         }
-        public void MoveImagesForward(List<PictureOrText> listpot, List<float> listfloat) //Will shuffle images forward.
+        public List<PictureOrText> MoveImagesForward(List<PictureOrText> listpot, List<float> listfloat) //Will shuffle images forward.
         {
             List<PictureOrText> outlist = new List<PictureOrText>
             {
@@ -160,7 +160,7 @@ namespace VideoOptimizer
                     }
                 }
             }
-            listpot = outlist;
+            return outlist;
         }
     }
 }
