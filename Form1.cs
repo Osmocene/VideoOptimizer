@@ -142,6 +142,9 @@ namespace VideoOptimizer
             }
         }
     }
+    //DataGridViewDisableButtonColumn is a DataGridViewButtonColumn with buttons that can be disabled.
+    //Source:
+    //https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/disable-buttons-in-a-button-column-in-the-datagrid
     public class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
     {
         public DataGridViewDisableButtonColumn()
